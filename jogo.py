@@ -5,7 +5,6 @@ import time
 pygame.init()
 
 pygame.display.set_caption("Corre Cascão")
-
 icon = pygame.image.load("assets/ico.png")
 pygame.display.set_icon(icon)
 
@@ -13,12 +12,43 @@ pygame.display.set_icon(icon)
 relogio = pygame.time.Clock()
 largura = 900
 altura = 700
+
 display = pygame.display.set_mode( (largura, altura))
 backgroud = pygame.image.load("assets/cascaoFundo.jpg")#imagem de fundo
+pedeNome = pygame.image.load("assets/pedeNome.jpg")# tela de fundo para pedir o nome
 cascaoCorre = pygame.image.load("assets/corre.png")#colocando o cascão para correr
 molhouEnd = pygame.image.load("assets/molhou.jpg")#mensagem de fim
 
-balde = pygame.image.load("assets/ba.png")# balde para molha o cascao
+ba = pygame.image.load("assets/ba.png")# balde para molha o cascao
+bb = pygame.image.load("assets/bb.png")
+bc = pygame.image.load("assets/bc.png")
+bd = pygame.image.load("assets/bd.png")
+be = pygame.image.load("assets/be.png")
+bf = pygame.image.load("assets/bf.png")
+bg = pygame.image.load("assets/bg.png")
+bh = pygame.image.load("assets/bh.png")
+bi = pygame.image.load("assets/bi.png")
+bj = pygame.image.load("assets/bj.png")
+bk = pygame.image.load("assets/bk.png")
+bl = pygame.image.load("assets/bl.png")
+bm = pygame.image.load("assets/bm.png")
+bn = pygame.image.load("assets/bn.png")
+bo = pygame.image.load("assets/bo.png")
+bp = pygame.image.load("assets/bp.png")
+bq = pygame.image.load("assets/bq.png")
+br = pygame.image.load("assets/br.png")
+bs = pygame.image.load("assets/bs.png")
+bt = pygame.image.load("assets/bt.png")
+bu = pygame.image.load("assets/bu.png")
+bv = pygame.image.load("assets/bv.png")
+by = pygame.image.load("assets/by.png")
+bw = pygame.image.load("assets/bw.png")
+bx = pygame.image.load("assets/bx.png")
+
+
+lista = [ba,bb,bc,bd,be,bf,bg,bh,bi,bj,bk,bl,bm,bn,bo,bp,bq,br,bs,bt,bu,bv,bw,by,bx]
+escolhido = random.choice(lista)
+
 baldeLargura = 81
 baldeAltura = 120
 baldePosicaoX = 250
@@ -28,7 +58,7 @@ baldeMovimento = 0
 cascaoLargura = 82
 cascaoAltura = 108
 cascaoPosicaoX = 320
-cascaoPosicaoY = 550
+cascaoPosicaoY = 580
 cascaoMovimento = 0
 
 velocidadeCascao = 5
@@ -36,10 +66,10 @@ velocidadeBalde = 5
 
 pygame.mixer.music.load("assets/audio.mp3") #musica de fundo
 pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.05)
+pygame.mixer.music.set_volume(0.2)
 
 banhoSound = pygame.mixer.Sound("assets/banho.wav")#som do bnaho
-banhoSound.set_volume(0.08)
+banhoSound.set_volume(0.2)
 
 
 def contaPlacar(contador):
@@ -51,16 +81,18 @@ def molhou():
     display.blit(molhouEnd, (140,160))
     pygame.display.update()
     pygame.mixer.Sound.play(banhoSound)
-    pygame.mixer.music.stop()
+    #pygame.mixer.music.stop()
     time.sleep(5)
 
 
+#nome = input("aqui")
 
 contador = 0
 while True:
 
     #trabalhar com background
     display.fill((255,255,255))
+    display.blit(pedeNome, ((largura - 1280),(altura - 720)))
     display.blit(backgroud, (largura - 1254,(altura - 708)))
 
     font = pygame.font.SysFont(None, 100)#buscar como alterar fonte
@@ -77,6 +109,7 @@ while True:
                 cascaoMovimento = velocidadeCascao
         if evento.type == pygame.KEYUP:
             cascaoMovimento = 0
+
     
     cascaoPosicaoX = cascaoPosicaoX + cascaoMovimento
     if cascaoPosicaoX < 27:
@@ -94,12 +127,14 @@ while True:
         velocidadeBalde = velocidadeBalde + 1
         baldePosicaoX = random.randrange(40,550)
         contador += 1
+        escolhido = random.choice(lista)
 
 
-    display.blit(balde, (baldePosicaoX, baldePosicaoY)) 
+    display.blit(escolhido, (baldePosicaoX, baldePosicaoY))
+
 
     #Verificando banho
-    if cascaoPosicaoY < baldePosicaoY + (baldeAltura - 30 ):
+    if (cascaoPosicaoY + 30) < baldePosicaoY + baldeAltura:
         if cascaoPosicaoX < baldePosicaoX and cascaoPosicaoX + cascaoLargura > baldePosicaoX or baldePosicaoX + (baldeLargura - 30) > cascaoPosicaoX and baldePosicaoX + baldeLargura < cascaoPosicaoX + baldeLargura:
             molhou()
             velocidadeBalde = 5
