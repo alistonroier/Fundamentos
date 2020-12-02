@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+import os
 
 pygame.init()
 
@@ -18,6 +19,7 @@ backgroud = pygame.image.load("assets/cascaoFundo.jpg")#imagem de fundo
 pedeNome = pygame.image.load("assets/pedeNome.jpg")# tela de fundo para pedir o nome
 cascaoCorre = pygame.image.load("assets/corre.png")#colocando o cascão para correr
 molhouEnd = pygame.image.load("assets/molhou.jpg")#mensagem de fim
+intro = pygame.image.load("assets/intro.jpg")#mensagem de boas vindas
 
 ba = pygame.image.load("assets/ba.png")# balde para molha o cascao
 bb = pygame.image.load("assets/bb.png")
@@ -80,7 +82,7 @@ def molhou():
     time.sleep(5)
 
 
-contador = 0
+contador = -1
 
 nome = input("\nInforme o seu nome: ")
 email = input("\nInforme seu e-mail: ")
@@ -93,18 +95,25 @@ arquivo.close()
 
 pygame.mixer.music.load("assets/audio.mp3") #musica de fundo
 pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.2)
+pygame.mixer.music.set_volume(0.1)
 
 banhoSound = pygame.mixer.Sound("assets/banho.wav")#som do banho
 banhoSound.set_volume(0.2)
 
 while True:
 
-    
+    if contador == -1: #para apresentar a intro antes do jogo
+        display.blit(intro, (-350,0))
+        pygame.display.update()
+        relogio.tick(60)
+        time.sleep(10) #tempo para ler a intro 
+        contador = contador + 1 #para não repetir a intro dentro do jogo
+    else:
+        pass
+
 
     #trabalhar com background
     display.fill((255,255,255))
-    display.blit(pedeNome, ((largura - 1280),(altura - 720)))
     display.blit(backgroud, (largura - 1254,(altura - 708)))
 
     font = pygame.font.SysFont(None, 100)#buscar como alterar fonte
