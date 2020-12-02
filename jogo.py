@@ -64,12 +64,7 @@ cascaoMovimento = 0
 velocidadeCascao = 5
 velocidadeBalde = 5
 
-pygame.mixer.music.load("assets/audio.mp3") #musica de fundo
-pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.2)
 
-banhoSound = pygame.mixer.Sound("assets/banho.wav")#som do bnaho
-banhoSound.set_volume(0.2)
 
 
 def contaPlacar(contador):
@@ -85,10 +80,27 @@ def molhou():
     time.sleep(5)
 
 
-#nome = input("aqui")
-
 contador = 0
+
+nome = input("\nInforme o seu nome: ")
+email = input("\nInforme seu e-mail: ")
+
+arquivo = open("cadastroJogo.txt", "a")
+texto = ("Nome do jogador -> "+nome+", E-mail -> "+email)
+arquivo.write(texto+"\n")
+arquivo.close()
+
+
+pygame.mixer.music.load("assets/audio.mp3") #musica de fundo
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.2)
+
+banhoSound = pygame.mixer.Sound("assets/banho.wav")#som do banho
+banhoSound.set_volume(0.2)
+
 while True:
+
+    
 
     #trabalhar com background
     display.fill((255,255,255))
