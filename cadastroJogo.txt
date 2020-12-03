@@ -1,17 +1,6 @@
-Nome do jogador -> aliston, E-mail -> qualquer
-Nome do jogador -> aliston, E-mail -> aliston@imed.com
-Nome do jogador -> a, E-mail -> a
-Nome do jogador -> a, E-mail -> a
-Nome do jogador -> a, E-mail -> a
-Nome do jogador -> 1, E-mail -> 1
-Nome do jogador -> , E-mail -> 
-Nome do jogador -> a, E-mail -> a
 Nome do jogador -> , E-mail -> 
 Nome do jogador -> , E-mail -> 
-Nome do jogador -> , E-mail -> 
-Nome do jogador -> , E-mail -> 
-Nome do jogador -> , E-mail -> 
-Nome do jogador -> a, E-mail -> 
+Nome do jogador -> asd, E-mail -> asd
 Nome do jogador -> , E-mail -> 
 Nome do jogador -> , E-mail -> 
 Nome do jogador -> , E-mail -> 
@@ -31,6 +20,4 @@ Nome do jogador -> , E-mail ->
 Nome do jogador -> , E-mail -> 
 Nome do jogador -> , E-mail -> 
 Nome do jogador -> , E-mail -> 
-Nome do jogador -> , E-mail -> 
-Nome do jogador -> , E-mail -> 
-Nome do jogador -> , E-mail -> 
+Nome do jogador -> aliston, E-mail -> aliston@imed.com.br
